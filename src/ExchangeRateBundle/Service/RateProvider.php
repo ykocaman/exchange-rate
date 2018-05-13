@@ -37,6 +37,7 @@ class RateProvider
     }
 
     /**
+     * Provider'dan datayı çeker ve json nesnesine çevirir.
      * @param $urlKey
      * @return mixed
      */

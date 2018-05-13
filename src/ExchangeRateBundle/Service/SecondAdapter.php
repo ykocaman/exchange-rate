@@ -44,6 +44,8 @@ class SecondAdapter implements RateAdapterInterface
     }
 
     /**
+     * Json dizisi içerisinde arama yapar.
+     *
      * @param $list
      * @param $symbol
      * @return mixed
