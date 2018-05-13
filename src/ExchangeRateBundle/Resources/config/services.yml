@@ -1,0 +1,15 @@
+services:
+
+  ExchangeRateBundle\Utils\HttpClient\GuzzleAdapter: ~
+  ExchangeRateBundle\Utils\HttpClient\ClientInterface: '@ExchangeRateBundle\Utils\HttpClient\GuzzleAdapter'
+
+  ExchangeRateBundle\Service\RateProvider:
+    autowire: true
+
+  ExchangeRateBundle\Repository\RateRepository:
+    factory: doctrine.orm.entity_manager:getRepository
+    arguments:
+        - ExchangeRateBundle\Entity\Rate
+
+  ExchangeRateBundle\Controller\DefaultController:
+    autowire: true

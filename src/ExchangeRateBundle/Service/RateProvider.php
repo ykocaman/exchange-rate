@@ -1,0 +1,59 @@
+<?php
+
+
+namespace ExchangeRateBundle\Service;
+
+use ExchangeRateBundle\Utils\HttpClient\ClientInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+
+/**
+ * Class RateProvider
+ * @package ExchangeRateBundle\Service
+ */
+class RateProvider
+{
+    /**
+     * @var ClientInterface HTTP istemcisi
+     */
+    private $client;
+    /**
+     * @var ContainerInterface Parametre okumak için gereken instance
+     */
+    private $container;
+    /**
+     * @var Kur bilgisini tutan instance
+     */
+    private $rate;
+
+    /**
+     * RateProvider constructor.
+     * @param ContainerInterface $container
+     * @param ClientInterface $client
+     */
+    public function __construct(ContainerInterface $container, ClientInterface $client)
+    {
+        $this->container = $container;
+        $this->client = $client;
+    }
+
+    /**
+     * @param $urlKey
+     * @return mixed
+     */
+    public function load($urlKey)
+    {
+        $url = $this->container->getParameter($urlKey);
+        $response = $this->client->request($url);
+        $this->rate = json_decode($response);
+
+        return $this->getRate();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRate()
+    {
+        return $this->rate;
+    }
+}
