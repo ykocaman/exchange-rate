@@ -8,3 +8,4 @@ Tanımlı olan iki provider'dan çektiği USD, EURO ve GBP döviz kuru bilgileri
 - `Utils` klasörü altına ise yardımcı sınıflar eklenmiştir.
 - HTTP istekleri için `Guzzle` kullanılmıştır.
 - Unit testleri yazılmıştır.
+- Symfony 3.4.9 ve PHP 7.2 sürümünde geliştirilmiştir.
